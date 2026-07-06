@@ -14,13 +14,16 @@ holds the hardware design (schematics, layout, gerbers) and firmware.
 ## Repo layout
 
 ```
-hardware/dimmer/   KiCad 10 project — mains dimmer (blank, needs capture)
-hardware/remote/   KiCad 10 project — battery remote (blank, needs capture)
+hardware/dimmer/   KiCad project — mains dimmer (schematic captured; PCB TODO)
+hardware/remote/   KiCad project — battery remote (schematic captured; PCB TODO)
+hardware/tools/    Python generators that bootstrapped the schematic capture
 ```
 
 Tooling: KiCad 10 for schematic/layout authoring. **kicad-happy** plugin
 (analysis/BOM/fab/docs only — not an authoring tool) for review, BOM, DRC,
-EMC, JLCPCB export. Schematic capture is still empty — populate next.
+EMC, JLCPCB export. **Schematics are captured** for both boards (validated via
+`kicad-cli` netlist export); PCB layout is the next phase. The `.kicad_sch`
+files are KiCad-7 format (`20230121`) — KiCad 10 opens and upgrades them.
 
 ## ⚠️ Safety — dimmer board is on 230V mains
 
