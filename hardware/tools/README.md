@@ -7,7 +7,7 @@ them so the capture is reproducible and reviewable in a diff.
 | File | Purpose |
 |------|---------|
 | `schlib.py` | Thin KiCad-schematic builder on top of [`kiutils`](https://pypi.org/project/kiutils/): embeds stdlib symbols, builds custom rectangular symbols, places parts, and wires nets with labels + power ports. |
-| `parts.py` | Custom symbols for parts absent from the KiCad standard library (HLK-PM03, TLP281-4, MOC3021, CP2102, ME6211, TP4056), with datasheet-accurate pinouts. |
+| `parts.py` | Custom symbols for parts / modules absent from the KiCad standard library (HLK-PM03, TLP281-4, MOC3021, ME6211, ESP32-DevKitC-30 plug-in module, TP4056 charge+protect module), with datasheet-accurate pinouts. |
 | `gen_dimmer.py` | Builds `../dimmer/dimmer.kicad_sch`. |
 | `gen_remote.py` | Builds `../remote/remote.kicad_sch`. |
 | `validate.py` | ERC-lite: rebuilds the netlist from geometry + label names and reports nets / floating pins. |

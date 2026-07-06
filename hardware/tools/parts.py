@@ -54,24 +54,49 @@ def MOC3021():
         datasheet="https://www.onsemi.com/pdf/datasheet/moc3021m-d.pdf")
 
 
-def CP2102():
-    # Silicon Labs CP2102 USB-to-UART bridge, QFN-28.
-    left = [("8", "VBUS", "power_in"), ("7", "REGIN", "power_in"),
-            ("6", "VDD", "power_out"), ("4", "D+", "bidirectional"),
-            ("5", "D-", "bidirectional"), ("3", "GND", "power_in"),
-            ("9", "~{RST}", "input")]
-    right = [("26", "TXD", "output"), ("25", "RXD", "input"),
-             ("24", "RTS", "output"), ("23", "CTS", "input"),
-             ("28", "DSR", "input"), ("27", "DTR", "output"),
-             ("1", "DCD", "input"), ("2", "RI", "input")]
-    nc = [(str(n), "NC", "no_connect") for n in range(10, 23)]  # pins 10..22
+def ESP32_DevKit():
+    # ESP32-WROOM-32 DevKit V1 (DOIT, 30-pin).  A ready-made module that plugs
+    # onto the carrier via two 1x15 female header rows.  It carries its own
+    # USB-serial bridge, micro-USB, auto-reset and BOOT/EN buttons, so the
+    # carrier only needs to route power (3V3/GND) and the GPIOs it uses.
+    # Pin numbers 1..15 = left row (top->bottom), 16..30 = right row.
+    left = [("1", "EN", "input"),
+            ("2", "IO36/VP", "bidirectional"),
+            ("3", "IO39/VN", "bidirectional"),
+            ("4", "IO34", "bidirectional"),
+            ("5", "IO35", "bidirectional"),
+            ("6", "IO32", "bidirectional"),
+            ("7", "IO33", "bidirectional"),
+            ("8", "IO25", "bidirectional"),
+            ("9", "IO26", "bidirectional"),
+            ("10", "IO27", "bidirectional"),
+            ("11", "IO14", "bidirectional"),
+            ("12", "IO12", "bidirectional"),
+            ("13", "GND", "power_in"),
+            ("14", "IO13", "bidirectional"),
+            ("15", "VIN", "power_in")]
+    right = [("16", "GND", "power_in"),
+             ("17", "IO23", "bidirectional"),
+             ("18", "IO22", "bidirectional"),
+             ("19", "IO1/TX0", "bidirectional"),
+             ("20", "IO3/RX0", "bidirectional"),
+             ("21", "IO21", "bidirectional"),
+             ("22", "IO19", "bidirectional"),
+             ("23", "IO18", "bidirectional"),
+             ("24", "IO5", "bidirectional"),
+             ("25", "IO17", "bidirectional"),
+             ("26", "IO16", "bidirectional"),
+             ("27", "IO4", "bidirectional"),
+             ("28", "IO2", "bidirectional"),
+             ("29", "IO15", "bidirectional"),
+             ("30", "3V3", "power_in")]
     return make_rect_symbol(
-        "Interface_USB:CP2102", "U", "CP2102",
-        left=left, right=right, top=nc[:7], bottom=nc[7:], half_width=12.7,
-        description="USB to UART bridge controller, QFN-28",
-        keywords="usb uart serial bridge cp2102",
-        fp_filters="QFN*5x5mm*P0.5mm*",
-        datasheet="https://www.silabs.com/documents/public/data-sheets/CP2102-9.pdf")
+        "Module:ESP32-DevKitC", "U", "ESP32-DevKitC-30",
+        left=left, right=right, half_width=10.16,
+        description="ESP32-WROOM-32 DevKit V1 (30-pin) plug-in module, USB programmable",
+        keywords="esp32 wroom devkit module wifi ble",
+        fp_filters="ESP32*DevKit* PinSocket*2.54mm*1x15*",
+        datasheet="https://docs.espressif.com/projects/esp-idf/en/latest/esp32/hw-reference/esp32/get-started-devkitc.html")
 
 
 def ME6211_33():
@@ -89,16 +114,19 @@ def ME6211_33():
         datasheet="https://datasheet.lcsc.com/lcsc/ME6211C33M5G.pdf")
 
 
-def TP4056():
-    # TP4056 1A Li-ion linear charger, SOP-8 (EP).
-    left = [("8", "CE", "input"), ("4", "VCC", "power_in"),
-            ("1", "TEMP", "input"), ("2", "PROG", "passive")]
-    right = [("5", "BAT", "power_out"), ("7", "~{CHRG}", "open_collector"),
-             ("6", "~{STDBY}", "open_collector"), ("3", "GND", "power_in")]
+def TP4056_module():
+    # TP4056 + DW01/FS8205 charge+protect breakout board (Type-C variant).
+    # A ready-made module: charges via its own USB-C, includes the PROG
+    # resistor, DW01 protection and CHRG/STDBY LEDs onboard.  The carrier wires
+    # only the battery (B+/B-) and the protected load output (OUT+/OUT-);
+    # IN+/IN- are fed by the module's own USB-C, so they stay unconnected here.
+    left = [("1", "IN+", "power_in"), ("2", "IN-", "power_in")]
+    right = [("3", "B+", "passive"), ("4", "B-", "passive"),
+             ("5", "OUT+", "power_out"), ("6", "OUT-", "power_out")]
     return make_rect_symbol(
-        "Battery_Management:TP4056", "U", "TP4056",
-        left=left, right=right, half_width=8.89,
-        description="1A standalone linear Li-ion battery charger, SOP-8",
-        keywords="battery charger li-ion lipo usb",
-        fp_filters="SOIC*3.9x4.9mm*P1.27mm*",
+        "Battery_Management:TP4056_Module", "U", "TP4056-Module",
+        left=left, right=right, half_width=7.62,
+        description="TP4056 Li-ion charge + DW01 protection breakout module, USB-C",
+        keywords="battery charger li-ion lipo module tp4056 dw01 protection",
+        fp_filters="PinHeader*1x06* TP4056*Module*",
         datasheet="https://dlnmh9ip6v2uc.cloudfront.net/datasheets/Prototyping/TP4056.pdf")
