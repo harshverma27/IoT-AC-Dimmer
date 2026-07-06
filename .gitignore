@@ -12,3 +12,7 @@ fp-info-cache
 
 # Editor local history
 .history/
+
+# Python
+__pycache__/
+*.pyc

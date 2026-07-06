@@ -619,13 +619,18 @@
       {
         "filename": "dimmer.kicad_sch",
         "name": "dimmer",
-        "uuid": "00000000-0000-0000-0000-000000000000"
+        "uuid": "8973eada-198c-43f1-a4a2-d4509a16b259"
       }
     ],
     "used_designators": "",
     "variants": []
   },
-  "sheets": [],
+  "sheets": [
+    [
+      "8973eada-198c-43f1-a4a2-d4509a16b259",
+      "dimmer"
+    ]
+  ],
   "text_variables": {},
   "tuning_profiles": {
     "meta": {
