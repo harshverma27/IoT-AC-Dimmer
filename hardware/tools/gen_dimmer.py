@@ -19,7 +19,7 @@ import parts
 OUT = os.path.join(os.path.dirname(__file__), "..", "dimmer", "dimmer.kicad_sch")
 
 FP = {
-    "esp32": "Module:ESP32-DevKitC",
+    "esp32": "IoT_AC_Dimmer:ESP32-DevKitC-30",
     "hlk": "Converter_ACDC:Converter_ACDC_HiLink_HLK-PMxx",
     "term2": "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal",
     "tlp": "Package_SO:SOIC-16_3.9x9.9mm_P1.27mm",

@@ -18,10 +18,13 @@ import os
 import schlib as S
 import parts
 
-OUT = os.path.join(os.path.dirname(__file__), "..", "remote", "remote.kicad_sch")
+# Output path; overridable so tooling (e.g. the PCB generator) can emit a fresh
+# kiutils-native schematic to a scratch file without touching the committed one.
+OUT = os.environ.get("REMOTE_SCH_OUT") or os.path.join(
+    os.path.dirname(__file__), "..", "remote", "remote.kicad_sch")
 
 FP = {
-    "esp32": "Module:ESP32-DevKitC",
+    "esp32": "IoT_AC_Dimmer:ESP32-DevKitC-30",
     "jst": "Connector_JST:JST_PH_S2B-PH-SM4-TB_1x02-1MP_P2.00mm_Horizontal",
     "tp4056": "Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical",
     "me6211": "Package_TO_SOT_SMD:SOT-23-5",

@@ -1283,7 +1283,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Module:ESP32-DevKitC"
+		(symbol "IoT_AC_Dimmer:ESP32-DevKitC-30"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -4799,7 +4799,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Module:ESP32-DevKitC")
+		(lib_id "IoT_AC_Dimmer:ESP32-DevKitC-30")
 		(at 196.85 49.53 0)
 		(unit 1)
 		(body_style 1)
@@ -4829,7 +4829,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Module:ESP32-DevKitC"
+		(property "Footprint" "IoT_AC_Dimmer:ESP32-DevKitC-30"
 			(at 196.85 49.53 0)
 			(hide yes)
 			(show_name no)
