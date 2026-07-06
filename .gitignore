@@ -9,3 +9,6 @@ _autosave-*
 fp-info-cache
 # Fab outputs (regenerate from source)
 /fab/
+
+# Editor local history
+.history/
